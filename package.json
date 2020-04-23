@@ -1,13 +1,15 @@
 {
-	"name": "toggl_reminder",
-	"version": "0.1.0",
-	"main": "index.js",
-	"license": "MIT",
-	"scripts": {
-		"start": "nodemon index.js"
-	},
-	"dependencies": {
-		"node-notifier": "^7.0.0",
-		"toggl-api": "^1.0.1"
-	}
+  "name": "toggl_reminder",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "pm2 start index.js",
+    "stop": "pm2 stop index.js"
+  },
+  "dependencies": {
+    "node-notifier": "^7.0.0",
+    "toggl-api": "^1.0.1"
+  }
 }
