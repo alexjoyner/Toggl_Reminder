@@ -1,13 +1,18 @@
+const notifier = require('node-notifier');
 var TogglClient = require('toggl-api');
-var cp = require('child_process');
 var toggl = new TogglClient({ apiToken: process.env.API_TOKEN });
+
+const MINUTES = 4;
 
 const runCheck = (done) => {
 	toggl.getCurrentTimeEntry(function (err, timeEntry) {
 		if (err) throw err;
 		if (timeEntry === null) {
 			console.error('STOP GOOFING OFF!!!');
-			cp.exec('StopGoofingOff.png');
+			notifier.notify({
+				title: 'HEY BIG BUTT!!!',
+				message: 'STOP GOOFING OFF!!!',
+			});
 		} else {
 			console.log('Good Work!!!');
 		}
@@ -21,7 +26,7 @@ const main = () => {
 			function () {
 				main();
 			}.bind(this),
-			1000 * 60 * 5
+			1000 * 60 * MINUTES
 		);
 	});
 };

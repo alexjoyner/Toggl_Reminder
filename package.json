@@ -7,6 +7,7 @@
 		"start": "nodemon index.js"
 	},
 	"dependencies": {
+		"node-notifier": "^7.0.0",
 		"toggl-api": "^1.0.1"
 	}
 }
