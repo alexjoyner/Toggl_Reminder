@@ -1,0 +1,12 @@
+{
+	"name": "toggl_reminder",
+	"version": "0.1.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"start": "nodemon index.js"
+	},
+	"dependencies": {
+		"toggl-api": "^1.0.1"
+	}
+}
