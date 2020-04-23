@@ -10,8 +10,8 @@ const runCheck = (done) => {
 		if (timeEntry === null) {
 			console.error('STOP GOOFING OFF!!!');
 			notifier.notify({
-				title: 'HEY BIG BUTT!!!',
-				message: 'STOP GOOFING OFF!!!',
+				title: 'STOP GOOFING OFF!',
+				message: 'remember to track your time while you work!',
 			});
 		} else {
 			console.log('Good Work!!!');
