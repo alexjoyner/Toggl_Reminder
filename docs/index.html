@@ -33,20 +33,24 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
     const messaging = firebase.messaging();
-    messaging.requestPermission()
-      .then(function () {
-        console.log('We have permission')
-        return messaging.getToken();
-      })
-      .then(function (token) {
-        console.log(token);
-      })
-      .catch(function (err) {
-        console.log('Error: ', err);
-      })
-    messaging.onMessage(function (payload) {
-      console.log('onMessage: ', payload);
-    })
+    navigator.serviceWorker.register('./Toggl_Reminder/firebase-messaging-sw.js')
+      .then((registration) => {
+        messaging.useServiceWorker(registration);
+        messaging.requestPermission()
+          .then(function () {
+            console.log('We have permission')
+            return messaging.getToken();
+          })
+          .then(function (token) {
+            console.log(token);
+          })
+          .catch(function (err) {
+            console.log('Error: ', err);
+          })
+        messaging.onMessage(function (payload) {
+          console.log('onMessage: ', payload);
+        })
+      });
   </script>
 </body>
 
