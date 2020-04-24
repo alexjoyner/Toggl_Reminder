@@ -33,7 +33,7 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
     const messaging = firebase.messaging();
-    navigator.serviceWorker.register('./Toggl_Reminder/firebase-messaging-sw.js')
+    navigator.serviceWorker.register('./firebase-messaging-sw.js')
       .then((registration) => {
         messaging.useServiceWorker(registration);
         messaging.requestPermission()
