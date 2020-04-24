@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-	</head>
 
-	<body>
-		<h1>Toggl Reminder!</h1>
-		<!-- The core Firebase JS SDK is always required and must be listed first -->
-		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
 
-		<!-- TODO: Add SDKs for Firebase products that you want to use
+<body>
+  <h1>Toggl Reminder!</h1>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
       https://firebase.google.com/docs/web/setup#available-libraries -->
-		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-messaging.js"></script>
 
-		<script>
-			// Your web app's Firebase configuration
-			var firebaseConfig = {
-				apiKey: 'AIzaSyDk4LHrP6ausGn65gaQNZ_rsIZVpQL8ZeU',
-				authDomain: 'toggl-reminder.firebaseapp.com',
-				databaseURL: 'https://toggl-reminder.firebaseio.com',
-				projectId: 'toggl-reminder',
-				storageBucket: 'toggl-reminder.appspot.com',
-				messagingSenderId: '419226815336',
-				appId: '1:419226815336:web:b1cdf63e25e4c244d1e4dd',
-				measurementId: 'G-KTRH7XLGEH',
-			};
-			// Initialize Firebase
-			firebase.initializeApp(firebaseConfig);
-			firebase.analytics();
-			firebase.messaging();
-		</script>
-	</body>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: 'AIzaSyDk4LHrP6ausGn65gaQNZ_rsIZVpQL8ZeU',
+      authDomain: 'toggl-reminder.firebaseapp.com',
+      databaseURL: 'https://toggl-reminder.firebaseio.com',
+      projectId: 'toggl-reminder',
+      storageBucket: 'toggl-reminder.appspot.com',
+      messagingSenderId: '419226815336',
+      appId: '1:419226815336:web:b1cdf63e25e4c244d1e4dd',
+      measurementId: 'G-KTRH7XLGEH',
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const messaging = firebase.messaging();
+    messaging.requestPermission()
+      .then(function () {
+        console.log('We have permission')
+        return messaging.getToken();
+      })
+      .then(function (token) {
+        console.log(token);
+      })
+      .catch(function (err) {
+        console.log('Error: ', err);
+      })
+    messaging.onMessage(function (payload) {
+      console.log('onMessage: ', payload);
+    })
+  </script>
+</body>
+
 </html>

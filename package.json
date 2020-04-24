@@ -9,6 +9,7 @@
     "stop": "pm2 stop index.js"
   },
   "dependencies": {
+    "firebase-admin": "^8.11.0",
     "node-notifier": "^7.0.0",
     "toggl-api": "^1.0.1"
   }

@@ -1,6 +1,13 @@
-const notifier = require('node-notifier');
+var admin = require('firebase-admin');
 var TogglClient = require('toggl-api');
 var toggl = new TogglClient({ apiToken: process.env.API_TOKEN });
+
+var serviceAccount = require('path/to/serviceAccountKey.json');
+
+admin.initializeApp({
+	credential: admin.credential.cert(serviceAccount),
+	databaseURL: 'https://toggl-reminder.firebaseio.com',
+});
 
 const MINUTES = 4;
 
@@ -9,10 +16,7 @@ const runCheck = (done) => {
 		if (err) throw err;
 		if (timeEntry === null) {
 			console.error('STOP GOOFING OFF!!!');
-			notifier.notify({
-				title: 'STOP GOOFING OFF!',
-				message: 'remember to track your time while you work!',
-			});
+			// implement notification code here
 		} else {
 			console.log('Good Work!!!');
 		}
