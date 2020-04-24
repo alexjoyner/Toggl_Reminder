@@ -36,6 +36,8 @@
     navigator.serviceWorker.register('./firebase-messaging-sw.js')
       .then((registration) => {
         messaging.useServiceWorker(registration);
+        messaging.usePublicVapidKey(
+          'BB9xLM7qdwhFibvtBsoTmGKem95q9zsIIJNKD1i-wXye1Dja75ZSOMKj9z7EYnhgBsMlghj3lZjJs23cUVUKhTs ');
         messaging.requestPermission()
           .then(function () {
             console.log('We have permission')
