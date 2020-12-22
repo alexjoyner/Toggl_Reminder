@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "firebase-admin": "^8.11.0",
-    "node-notifier": "^7.0.0",
+    "node-notifier": "^8.0.1",
     "toggl-api": "^1.0.1"
   }
 }
